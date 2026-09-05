@@ -1,8 +1,0 @@
-name = "ying-play"
-compatibility_date = "2026-09-04"
-pages_build_output_dir = "public"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "ying-play"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
