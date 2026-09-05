@@ -1,0 +1,6 @@
+runtime/
+cache/
+template_c/
+*.log
+.DS_Store
+Thumbs.db

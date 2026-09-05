@@ -1,0 +1,1 @@
+import {json} from '../_utils.js';export async function onRequestGet({env}){const r=await env.DB.prepare("SELECT key,value FROM settings WHERE key IN ('site_name','site_subtitle','theme')").all();return json({settings:Object.fromEntries(r.results.map(x=>[x.key,x.value]))})}

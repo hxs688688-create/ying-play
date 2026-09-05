@@ -1,0 +1,3 @@
+import {json,verify} from '../../_utils.js';
+export async function onRequestGet({request,env}){if(!await verify(request,env))return json({error:'未登录'},401);const r=await env.DB.prepare('SELECT key,value FROM settings').all();return json({settings:Object.fromEntries(r.results.map(x=>[x.key,x.value]))})}
+export async function onRequestPost({request,env}){if(!await verify(request,env))return json({error:'未登录'},401);const b=await request.json().catch(()=>({}));for(const [k,v] of Object.entries(b)){if(!/^[a-zA-Z0-9_.-]{1,80}$/.test(k))continue;await env.DB.prepare('INSERT INTO settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value').bind(k,String(v)).run()}return json({ok:true})}

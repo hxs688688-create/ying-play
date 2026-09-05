@@ -1,0 +1,2 @@
+import {json,verify} from '../../_utils.js';
+export async function onRequestGet({request,env}){if(!await verify(request,env))return json({error:'未登录'},401);const [v,c,s,e]=await Promise.all([env.DB.prepare('SELECT COUNT(*) n FROM videos').first(),env.DB.prepare('SELECT COUNT(*) n FROM categories').first(),env.DB.prepare('SELECT COUNT(*) n FROM sources').first(),env.DB.prepare('SELECT COUNT(*) n FROM episodes').first()]);return json({videos:v.n,categories:c.n,sources:s.n,episodes:e.n})}

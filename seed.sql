@@ -1,0 +1,1 @@
+INSERT OR IGNORE INTO categories(name,slug,sort,enabled,created_at) VALUES('电影','movie',100,1,strftime('%s','now')),('电视剧','tv',90,1,strftime('%s','now')),('动漫','anime',80,1,strftime('%s','now')),('综艺','show',70,1,strftime('%s','now'));
